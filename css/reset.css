@@ -33,6 +33,9 @@ body {
   height: 100%;
   line-height: 1;
 }
+input{
+  border-color: none;
+}
 .wrapper{
   min-height: 100%;
   overflow: hidden;
