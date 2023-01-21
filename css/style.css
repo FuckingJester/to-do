@@ -37,6 +37,7 @@ body{
     border-radius: 8px;
     width: 100%;
     padding: 15px 0 15px 27px;
+    text-overflow: ellipsis;
    
 }
 .content__input::placeholder{
@@ -62,8 +63,8 @@ body{
 
 }
 .item__check{
-    height: 28px;
-    width: 28px;
+    min-height: 28px;
+    min-width: 28px;
     border: 1px solid #EA5959;
     border-radius: 8px;
     position: relative;

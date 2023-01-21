@@ -1,18 +1,22 @@
 const addBtn = document.querySelector('.content__add');
-const checkBtn = document.querySelector('.item__check');
-const inputBtn = document.querySelector('.content__input');
-const delBtn = document.querySelector('.item__delete');
 const tasksBtn = document.querySelector('.main__tasks');
-const taskItem = document.querySelectorAll('.tasks__item');
+const inputBtn = document.querySelector('.content__input');
 const tasksAll = [];
-
+ 
 
 //CheckBox animation============================================================================
 tasksBtn.addEventListener('click', (e) => {
-        let targetItem = e.target
+        const targetItem = e.target
         if (targetItem.closest('.item__check')) {
             targetItem.closest('.item__check').classList.toggle('checked')
             
+        }
+        if(targetItem.closest('.item__delete')){
+            const task = targetItem.parentElement
+            const taskId = task.getAttribute('id')
+            deleteTasks(taskId, tasksAll)
+            tasksRender(tasksAll)
+    
         }
     })
 // Add task after click====================================================================
@@ -54,11 +58,18 @@ function tasksRender(arr){
         <div id=${item.id} class="tasks__item item">
             <div class="item__check"></div>
             <div class="item__content">${item.text}</div>
-            <div class="item__delete"><a href="#">-</a> </div>
+            <div class="item__delete">-</div>
         </div>
         `
         htmlList = htmlList + taskHtml
     })
     tasksBtn.innerHTML = htmlList
 }
-
+//Delete task fumction
+function deleteTasks(id,list){
+    list.forEach((task,idx) => {
+        if(task.id == id){
+            list.splice(idx,1)
+        }
+    })
+}
